@@ -1,5 +1,5 @@
 %h1 Welcome to Matthew Notes!
 = form_tag("/chapter", :method => "get") do
-  = select_tag(:chapter, options_from_collection_for_select(Chapter.all, :number, :title), :class => "span3")
+  = select_tag(:chapter, options_from_collection_for_select(Chapter.all.sort, :number, :title), :class => "span3")
   %br
   = submit_tag("Go", :class => "btn btn-large btn-primary")
