@@ -1,8 +1,7 @@
 !!!
 %html
   %head
-    %title
-      = @current_chapter.title
+    %title Matthew Notes - Bob Di Lorenzo
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
@@ -18,7 +17,7 @@
             %tbody
               - for chapter in Chapter.all.sort
                 - if @current_chapter == chapter
-                  %tr.info
+                  %tr.active
                     %td
                       = link_to chapter.title, chapters_url(:chapter => chapter.number)
                 - else
