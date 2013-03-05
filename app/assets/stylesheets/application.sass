@@ -1,5 +1,10 @@
 @import bootstrap
 @import bootstrap-responsive
+@import bootstrap-rowlink
+
+@import compass
+@import "compass/layout"
+@include sticky-footer(17px)
 
 .container-fluid
   margin-top: 70px
@@ -7,7 +12,7 @@
 
 .container
   padding-top: 80px
-  padding-bottom: 80px
+  padding-bottom: 40px
 
 .centered
   text-align: center
@@ -51,21 +56,18 @@ h3 a
   color: black
   text-decoration: underline
 
-.footer
-  margin: 0 auto
-  position: fixed
-  bottom: 0px
-  width: 100%
-  height: 50px
-  background-color: #F5F5F5
-
-.footer-well
-  padding-left: 50px
-  padding-right: 50px
-  padding-top: 10px
+#footer
+  padding: 15px
+  color: #A1A1A1
+  @include background-image(linear-gradient(#222222, #101010))
 
 .quote
   color: #848484
   font-style: italic
   padding-top: 10px
   padding-left: 15px
+
+@media (max-width: 767px)
+  #footer
+    margin-left: -20px
+    margin-right: -20px

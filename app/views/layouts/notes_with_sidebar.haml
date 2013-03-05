@@ -1,7 +1,8 @@
 !!!
 %html
   %head
-    %title Matthew Notes - Bob Di Lorenzo
+    %title
+      = @current_chapter.title
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
@@ -13,13 +14,22 @@
     %div.nav-collapse.collapse
       %div.container-fluid.span3
         %div.row-fluid
-          %div.well.sidebar-nav
-            %ul
+          %table.table.sidebar-nav(data-provides="rowlink")
+            %tbody
               - for chapter in Chapter.all.sort
-                %li
-                  = link_to chapter.title, chapters_url(:chapter => chapter.number)
+                - if @current_chapter == chapter
+                  %tr.info
+                    %td
+                      = link_to chapter.title, chapters_url(:chapter => chapter.number)
+                - else
+                  %tr
+                    %a{:href => "#{chapters_url(:chapter => chapter.number)}"}
+                      %td
+                        = link_to chapter.title, chapters_url(:chapter => chapter.number)
     %div.container.span8.notes
       = yield
+    %div#footer
+      &copy; 2013 Bob Di Lorenzo
 
     / RefTagger from Logos
     %script{:src => "http://bible.logos.com/jsapi/referencetagging.js", :type => "text/javascript"}
